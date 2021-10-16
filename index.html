@@ -24,7 +24,7 @@
         <div class="math">
             Step:
             <button class="button minus" v-on:click="incrementStep">-2</button>
-            <button class="button plus" v-on:click="decremtnStep">+2</button>
+            <button class="button plus" v-on:click="decrementStep">+2</button>
         </div>
     </section>
     <hr>
@@ -59,12 +59,11 @@
                     this.counter--;
                 },
                 incrementStep(){
-                    this.step = this.step + 2;
+                    this.step += 2;
                 },
-                decremtnStep(){
-                    this.step = this.step - 2;
+                decrementStep(){
+                    this.step -= 2;
                 }
-                //...
             },
             computed: {
                 sum() {
@@ -96,16 +95,15 @@
             counterEl.textContent = data.counter;
         };
         const incrementStep = function(){
-            data.step = data.step + 2;
+            data.step += 2;
             stepEl.textContent = data.step;
         };
         const decrementStep = function(){
-            data.step = data.step - 2;
+            data.step -= 2;
             stepEl.textContent = data.step;
         };
-        //...
         const getSum = function () {
-            let sum = data.counter + data.step;
+            const sum = data.counter + data.step;
             sumEl.textContent = sum;
         };
 
@@ -116,7 +114,7 @@
             Object.defineProperty(data, key, {
                 get: function () {
                     console.log('get');
-                    // queue.push();
+                    queue.push();
                     return value;
                 },
                 set: function (newValue) {
